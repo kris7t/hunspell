@@ -1,0 +1,26 @@
+CVS
+
+# http://www.gnu.org/software/automake
+
+Makefile.in
+
+# http://www.gnu.org/software/autoconf
+
+/autom4te.cache
+/aclocal.m4
+/compile
+/configure
+/depcomp
+/install-sh
+/missing
+
+# From .cvsignore
+
+Makefile
+config.h
+config.log
+config.status
+hunspell.pc
+libtool
+stamp-h1
+hunspell-*.tar.gz
