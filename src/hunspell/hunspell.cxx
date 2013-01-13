@@ -1080,7 +1080,7 @@ int Hunspell::suggest_auto(char*** slst, const char * word)
                      mkallsmall2(wspace, unicw, nc);
                      ns = pSMgr->suggest_auto(slst, wspace, ns);
                      for (int j=0; j < ns; j++)
-                       mkinitcap2((*slst)[j], unicw, nc);
+                       mkinitcap((*slst)[j]);
                      ns = pSMgr->suggest_auto(slst, cw, ns);
                      break;
 
@@ -1102,11 +1102,11 @@ int Hunspell::suggest_auto(char*** slst, const char * word)
                      mkallsmall2(wspace, unicw, nc);
                      ns = pSMgr->suggest_auto(slst, wspace, ns);
 
-                     mkinitcap2(wspace, unicw, ns);
+                     mkinitcap(wspace);
                      ns = pSMgr->suggest_auto(slst, wspace, ns);
 
                      for (int j=0; j < ns; j++)
-                       mkallcap2((*slst)[j], unicw, nc);
+                       mkallcap((*slst)[j]);
                      break;
                    }
   }
@@ -1296,8 +1296,8 @@ int Hunspell::suggest_pos_stems(char*** slst, const char * word)
                      ns = pSMgr->suggest_pos_stems(slst, wspace, ns);
 
                      if (ns == 0) {
-                       mkinitcap2(wspace, unicw, nc);
-                         ns = pSMgr->suggest_pos_stems(slst, wspace, ns);
+                       mkinitcap(wspace);
+                       ns = pSMgr->suggest_pos_stems(slst, wspace, ns);
                      }
                      break;
                    }
@@ -1889,7 +1889,7 @@ char * Hunspell::morph_with_correction(const char * word)
                             mystrcat(result, st, MAXLNLEN);
                             free(st);
                          }
-                         mkinitcap2(wspace, unicw, nc);
+                         mkinitcap(wspace);
                          st = pSMgr->suggest_morph_for_spelling_error(wspace);
                          if (st) {
                             if (*result) mystrcat(result, "\n", MAXLNLEN);
@@ -1929,7 +1929,7 @@ char * Hunspell::morph_with_correction(const char * word)
                         mystrcat(result, st, MAXLNLEN);
                         free(st);
                      }
-                     mkinitcap2(wspace, unicw, nc);
+                     mkinitcap(wspace);
                      st = pSMgr->suggest_morph_for_spelling_error(wspace);
                      if (st) {
                         if (*result) mystrcat(result, "\n", MAXLNLEN);
@@ -1953,7 +1953,7 @@ char * Hunspell::morph_with_correction(const char * word)
                           mystrcat(result, st, MAXLNLEN);
                           free(st);
                         }
-                        mkinitcap2(wspace, unicw, nc);
+                        mkinitcap(wspace);
                         st = pSMgr->suggest_morph_for_spelling_error(wspace);
                         if (st) {
                           if (*result) mystrcat(result, "\n", MAXLNLEN);
